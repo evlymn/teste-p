@@ -1,0 +1,51 @@
+<section class="cadastro">
+  <div class="cadastro-mat-card">
+    <div class="cadastro-logout">
+      <a mat-button (click)="logout()" target="_blank">sair</a>
+    </div>
+    <h1>{{titulo}}</h1>
+    <div>
+      <h3>Escolha os planos que deseja cadastrar </h3>
+    </div>
+    <div *ngFor="let item of clientes; first as first; index as i"
+         class="cadastro-planos">
+
+      <mat-checkbox #checkboxes
+                    (change)="checkPlano(item, $event, i)"
+                    [checked]="item.checked">{{item.nome}}</mat-checkbox>
+    </div>
+    <div>
+      <h3>Quantos funcionários deseja cadastrar? {{totalRegistros}} </h3>
+      <div class="cadastro-actions">
+        <mat-slider class="cadastro-slider"
+                    [(ngModel)]="totalRegistros"
+                    thumbLabel
+                    tickInterval="20"
+                    step="1"
+                    min="1"
+                    max="20"
+                    aria-label="units"></mat-slider>
+        <button (click)="salvar()" mat-raised-button color="primary">Salvar</button>
+      </div>
+    </div>
+
+    <div class="cadastro-fields">
+      <div *ngFor="let n of setArrayFromNumber(totalRegistros); index as i">
+        <h4>
+          {{(i + 1)}}:
+        </h4>
+        <div class="cadastro-items" *ngFor="let item of planos; index as j ">
+
+          <div *ngIf="i==0" class="cadastro-item-titulo"  matTooltip="{{ item.coluna}}">{{item.coluna}}</div>
+          <mat-form-field [style]="(item.type && item.type== 'number') ? 'width:100px': ''" class="cadastro-animation"
+                          appearance="outline" [@openCloseFields]=" openClosed ? 'open' : 'closed'"
+          >
+            <input [type]="item.type ? item.type: 'text'" matInput #fields
+                   [id]="item.key + '#' + i.toString() + '#'">
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

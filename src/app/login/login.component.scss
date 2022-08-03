@@ -1,0 +1,25 @@
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  flex-direction: column;
+  background: rgb(85,99,152);
+  background: linear-gradient(0deg, rgba(85,99,152,1) 0%, rgba(167,180,229,1) 100%)
+}
+
+.login-input {
+  margin-left: 10px;
+  margin-bottom: 5px;
+}
+.login-title {
+  text-align: center;
+  color: #4f4f4f;
+}
+
+.login-button {
+  width: 100%;
+  background-color: #0F39B0;
+  color: white;
+  border-radius: 20px!important;
+}

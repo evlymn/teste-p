@@ -1,0 +1,18 @@
+<section class="login">
+
+  <mat-card>
+    <!--    <h2 class="login-title"> Login </h2>-->
+    <mat-form-field appearance="outline" matTooltip="Informe o email cadastrado">
+      <input class="login-input" matInput alt="Email" [(ngModel)]="email">
+      <mat-icon matPrefix>email</mat-icon>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="outline" matTooltip="Informe a senha">
+      <input class="login-input" matInput type="password" alt="senha" [(ngModel)]="password">
+      <mat-icon matPrefix>lock</mat-icon>
+    </mat-form-field>
+    <br>
+    <button type="button" (click)="login()" class="login-button" mat-raised-button>Logar</button>
+  </mat-card>
+
+</section>

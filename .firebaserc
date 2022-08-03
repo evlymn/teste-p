@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "compartilhagram-com": {
+      "hosting": {
+        "pipo": [
+          "pipo-emendes-dev"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "compartilhagram-com"
+  }
+}
