@@ -39,7 +39,7 @@ export class CadastroComponent implements OnInit {
       this.inputs.push(f)
     })
 
-    const constrols = new Map<string,any>();
+    const controls = new Map<string,any>();
     this.itemsChecks.forEach(items => {
       if (items.checked) {
         for (let i = 0; i < this.totalRegistros; i++) {
@@ -47,18 +47,16 @@ export class CadastroComponent implements OnInit {
           const data = new Map<string, any>()
           items.campos.forEach((c: any) => {
             const field = this.inputs.filter(f => f.nativeElement.id.includes(c.key + '#' + i.toString() + '#'))[0];
-            constrols.set(c.key + '#' + i.toString() + '#', field);
+            controls.set(c.key + '#' + i.toString() + '#', field);
             data.set(c.key, field.nativeElement.value)
-              //  field.nativeElement.value = '';
             j++
           })
 
          this._service.gravarDados(Object.fromEntries(data),items.colecao);
-        //  console.log(Object.fromEntries(data), items.colecao);
         }
       }
     })
-    constrols.forEach(c=> {
+    controls.forEach(c=> {
       c.nativeElement.value = '';
     })
   }
@@ -96,12 +94,13 @@ export class CadastroComponent implements OnInit {
         unicos.push(u);
       }
     })
-
     this.planos = unicos;
+
     if (this.planos.length == 0) {
       this.planos = this.itemsChecks.values().next().value.campos
       this.checkboxes.first.checked = true;
     }
+
     setTimeout(() => {
       this.openClosed = true;
     }, 100)
